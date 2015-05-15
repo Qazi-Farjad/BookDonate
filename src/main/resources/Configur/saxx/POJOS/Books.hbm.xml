@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 15, 2015 9:51:40 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="saxx.POJOS.Books" table="books" catalog="donation" optimistic-lock="version">
+        <id name="bookId" type="int">
+            <column name="BookId" />
+            <generator class="assigned" />
+        </id>
+        <property name="bookName" type="string">
+            <column name="BookName" length="45" not-null="true" />
+        </property>
+        <property name="author" type="string">
+            <column name="Author" length="45" />
+        </property>
+        <property name="class_" type="string">
+            <column name="Class" length="45" />
+        </property>
+        <property name="board" type="string">
+            <column name="Board" length="45" />
+        </property>
+        <property name="bookImage" type="string">
+            <column name="BookImage" length="45" />
+        </property>
+        <property name="bookDescription" type="string">
+            <column name="BookDescription" length="16777215" />
+        </property>
+        <set name="matchmakers" table="matchmaker" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="BookId" not-null="true" />
+            </key>
+            <one-to-many class="saxx.POJOS.Matchmaker" />
+        </set>
+    </class>
+</hibernate-mapping>
