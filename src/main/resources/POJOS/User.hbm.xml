@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 15, 2015 9:51:40 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 15, 2015 10:43:55 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="saxx.POJOS.User" table="user" catalog="donation" optimistic-lock="version">
-        <id name="id" type="int">
+    <class name="POJOS.User" table="user" catalog="donation" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
             <column name="Id" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="name" type="string">
             <column name="Name" length="45" not-null="true" />
@@ -32,6 +32,11 @@
         <property name="verification" type="binary">
             <column name="Verification" not-null="true" />
         </property>
-        <one-to-one name="matchmaker" class="saxx.POJOS.Matchmaker"></one-to-one>
+        <set name="matchmakers" table="matchmaker" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Id" not-null="true" />
+            </key>
+            <one-to-many class="POJOS.Matchmaker" />
+        </set>
     </class>
 </hibernate-mapping>

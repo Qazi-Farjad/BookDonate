@@ -7,9 +7,9 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/donation?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">farjad</property>
-    <mapping resource="saxx/POJOS/Books.hbm.xml"/>
-    <mapping resource="saxx/POJOS/Matchmaker.hbm.xml"/>
-    <mapping resource="saxx/POJOS/User.hbm.xml"/>
-    <mapping resource="saxx/POJOS/Transaction.hbm.xml"/>
+    <mapping resource="POJOS/Transaction.hbm.xml"/>
+    <mapping resource="POJOS/Matchmaker.hbm.xml"/>
+    <mapping resource="POJOS/User.hbm.xml"/>
+    <mapping resource="POJOS/Books.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

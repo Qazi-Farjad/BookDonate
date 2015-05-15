@@ -1,5 +1,5 @@
-package Configur.saxx.POJOS;
-// Generated May 15, 2015 9:51:39 AM by Hibernate Tools 4.3.1
+package POJOS;
+// Generated May 15, 2015 10:43:55 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,7 +23,7 @@ import javax.persistence.Table;
 public class Books  implements java.io.Serializable {
 
 
-     private int bookId;
+     private Integer bookId;
      private String bookName;
      private String author;
      private String class_;
@@ -34,12 +36,10 @@ public class Books  implements java.io.Serializable {
     }
 
 	
-    public Books(int bookId, String bookName) {
-        this.bookId = bookId;
+    public Books(String bookName) {
         this.bookName = bookName;
     }
-    public Books(int bookId, String bookName, String author, String class_, String board, String bookImage, String bookDescription, Set matchmakers) {
-       this.bookId = bookId;
+    public Books(String bookName, String author, String class_, String board, String bookImage, String bookDescription, Set matchmakers) {
        this.bookName = bookName;
        this.author = author;
        this.class_ = class_;
@@ -49,15 +49,15 @@ public class Books  implements java.io.Serializable {
        this.matchmakers = matchmakers;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="BookId", unique=true, nullable=false)
-    public int getBookId() {
+    public Integer getBookId() {
         return this.bookId;
     }
     
-    public void setBookId(int bookId) {
+    public void setBookId(Integer bookId) {
         this.bookId = bookId;
     }
 

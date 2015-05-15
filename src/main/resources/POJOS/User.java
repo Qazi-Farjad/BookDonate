@@ -1,12 +1,16 @@
-package Configur.saxx.POJOS;
-// Generated May 15, 2015 9:51:39 AM by Hibernate Tools 4.3.1
+package POJOS;
+// Generated May 15, 2015 10:43:55 AM by Hibernate Tools 4.3.1
 
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -19,7 +23,7 @@ import javax.persistence.Table;
 public class User  implements java.io.Serializable {
 
 
-     private int id;
+     private Integer id;
      private String name;
      private byte[] organization;
      private String email;
@@ -28,14 +32,13 @@ public class User  implements java.io.Serializable {
      private String city;
      private String country;
      private byte[] verification;
-     private Matchmaker matchmaker;
+     private Set matchmakers = new HashSet(0);
 
     public User() {
     }
 
 	
-    public User(int id, String name, byte[] organization, String email, String password, String city, String country, byte[] verification) {
-        this.id = id;
+    public User(String name, byte[] organization, String email, String password, String city, String country, byte[] verification) {
         this.name = name;
         this.organization = organization;
         this.email = email;
@@ -44,8 +47,7 @@ public class User  implements java.io.Serializable {
         this.country = country;
         this.verification = verification;
     }
-    public User(int id, String name, byte[] organization, String email, String password, String address, String city, String country, byte[] verification, Matchmaker matchmaker) {
-       this.id = id;
+    public User(String name, byte[] organization, String email, String password, String address, String city, String country, byte[] verification, Set matchmakers) {
        this.name = name;
        this.organization = organization;
        this.email = email;
@@ -54,18 +56,18 @@ public class User  implements java.io.Serializable {
        this.city = city;
        this.country = country;
        this.verification = verification;
-       this.matchmaker = matchmaker;
+       this.matchmakers = matchmakers;
     }
    
-     @Id 
+     @Id @GeneratedValue(strategy=IDENTITY)
 
     
     @Column(name="Id", unique=true, nullable=false)
-    public int getId() {
+    public Integer getId() {
         return this.id;
     }
     
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -149,13 +151,13 @@ public class User  implements java.io.Serializable {
         this.verification = verification;
     }
 
-@OneToOne(fetch=FetchType.LAZY, mappedBy="user")
-    public Matchmaker getMatchmaker() {
-        return this.matchmaker;
+@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
+    public Set getMatchmakers() {
+        return this.matchmakers;
     }
     
-    public void setMatchmaker(Matchmaker matchmaker) {
-        this.matchmaker = matchmaker;
+    public void setMatchmakers(Set matchmakers) {
+        this.matchmakers = matchmakers;
     }
 
 

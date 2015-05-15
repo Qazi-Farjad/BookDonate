@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 15, 2015 9:51:40 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 15, 2015 10:43:55 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="saxx.POJOS.Matchmaker" table="matchmaker" catalog="donation" optimistic-lock="version">
-        <id name="id" type="int">
-            <column name="Id" />
-            <generator class="foreign">
-                <param name="property">user</param>
-            </generator>
+    <class name="POJOS.Matchmaker" table="matchmaker" catalog="donation" optimistic-lock="version">
+        <id name="matchmakerId" type="java.lang.Integer">
+            <column name="MatchmakerId" />
+            <generator class="identity" />
         </id>
-        <many-to-one name="books" class="saxx.POJOS.Books" fetch="select">
+        <many-to-one name="books" class="POJOS.Books" fetch="select">
             <column name="BookId" not-null="true" />
         </many-to-one>
-        <one-to-one name="user" class="saxx.POJOS.User" constrained="true"></one-to-one>
+        <many-to-one name="user" class="POJOS.User" fetch="select">
+            <column name="Id" not-null="true" />
+        </many-to-one>
         <property name="donRec" type="binary">
             <column name="DonRec" not-null="true" />
         </property>
@@ -24,13 +24,13 @@
             <key>
                 <column name="DonorId" not-null="true" />
             </key>
-            <one-to-many class="saxx.POJOS.Transaction" />
+            <one-to-many class="POJOS.Transaction" />
         </set>
         <set name="transactionsForRecId" table="transaction" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="RecId" not-null="true" />
             </key>
-            <one-to-many class="saxx.POJOS.Transaction" />
+            <one-to-many class="POJOS.Transaction" />
         </set>
     </class>
 </hibernate-mapping>

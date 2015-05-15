@@ -1,12 +1,12 @@
 ----------------------------------------------------
-	Database Version 1.0
+	Database Version 1.1
 	
 ----------------------------------------------------
 
 create schema donation;
 
 CREATE TABLE donation.user (
-  Id INT NOT NULL,
+  Id INT NOT NULL AUTO_INCREMENT,
   Name VARCHAR(45) NOT NULL,
   Organization BINARY(1) NOT NULL,
   Email VARCHAR(45) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE donation.user (
   UNIQUE INDEX Id_UNIQUE (Id ASC));
 
 CREATE TABLE donation.books (
-  BookId INT NOT NULL,
+  BookId INT NOT NULL AUTO_INCREMENT,
   BookName VARCHAR(45) NOT NULL,
   Author VARCHAR(45) NULL,
   Class VARCHAR(45) NULL,
@@ -30,13 +30,14 @@ CREATE TABLE donation.books (
   UNIQUE INDEX BookId_UNIQUE (BookId ASC));
   
 CREATE TABLE donation.matchmaker (
+  MatchmakerId INT NOT NULL AUTO_INCREMENT,
   Id INT NOT NULL,
   DonRec BINARY(1) NOT NULL,
   BookId INT NOT NULL,
   Quantity INT NOT NULL DEFAULT 1,
   INDEX Id_idx (Id ASC),
   INDEX BookId_idx (BookId ASC),
-  PRIMARY KEY (Id),
+  PRIMARY KEY (MatchmakerId),
   CONSTRAINT Id
     FOREIGN KEY (Id)
     REFERENCES donation.user (Id)
@@ -90,6 +91,11 @@ CREATE TABLE donation.gamification (
 ----------------------------------------------------
 Put deprecated tables below this:
 ----------------------------------------------------
-
-	
+----------------------------------------------------
+Delete Commands:
+----------------------------------------------------
+drop table transaction;
+drop table matchmaker;
+drop table books;
+drop table user;	
 	

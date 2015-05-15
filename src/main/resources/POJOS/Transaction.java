@@ -1,5 +1,5 @@
-package Configur.saxx.POJOS;
-// Generated May 15, 2015 9:51:39 AM by Hibernate Tools 4.3.1
+package POJOS;
+// Generated May 15, 2015 10:43:55 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;

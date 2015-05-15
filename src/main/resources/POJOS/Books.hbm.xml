@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 15, 2015 9:51:40 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated May 15, 2015 10:43:55 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="saxx.POJOS.Books" table="books" catalog="donation" optimistic-lock="version">
-        <id name="bookId" type="int">
+    <class name="POJOS.Books" table="books" catalog="donation" optimistic-lock="version">
+        <id name="bookId" type="java.lang.Integer">
             <column name="BookId" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="bookName" type="string">
             <column name="BookName" length="45" not-null="true" />
@@ -30,7 +30,7 @@
             <key>
                 <column name="BookId" not-null="true" />
             </key>
-            <one-to-many class="saxx.POJOS.Matchmaker" />
+            <one-to-many class="POJOS.Matchmaker" />
         </set>
     </class>
 </hibernate-mapping>
