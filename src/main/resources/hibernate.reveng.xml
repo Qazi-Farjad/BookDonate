@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="donation"/>
-  <table-filter match-name="transaction"/>
+  <table-filter match-name="matchmaker"/>
   <table-filter match-name="user"/>
   <table-filter match-name="books"/>
-  <table-filter match-name="matchmaker"/>
+  <table-filter match-name="transaction"/>
 </hibernate-reverse-engineering>
