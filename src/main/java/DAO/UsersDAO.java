@@ -32,19 +32,12 @@ public class UsersDAO {
         tx.commit();
     }
         
-    public User FindUser(String Email, String Password)
+    public List<User> GetUsers()
     {
-        Query q=session.createQuery("from User where email=:mail and password=:pass"); 
-        q.setParameter("mail",Email);
-        q.setParameter("pass",Password);
+        Query q=session.createQuery("from User "); 
         List<User> list=q.list();  
 
-        User us = null;
-        Iterator<User> itr=list.iterator();  
-        while(itr.hasNext()){  
-            us=itr.next(); 
-	}
-        return us;
+        return list;
     }
      
     public void DeleteUserByEmail(String Email)

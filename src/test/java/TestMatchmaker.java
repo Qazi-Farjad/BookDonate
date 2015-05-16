@@ -18,5 +18,22 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 public class TestMatchmaker {
+   
+    @Test
+        public void TestInsertUser(){
+ 
+            
+            
+           Matchmaker mk = new Matchmaker();
+           MatchmakerDAO ud = new MatchmakerDAO();
+           
+           
+           
+           ud.AddEntry(mk);
+           
+           
+           
+           ud.CloseSession();    
+    }
     
 }

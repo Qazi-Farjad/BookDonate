@@ -28,7 +28,7 @@ public class Matchmaker  implements java.io.Serializable {
      private Integer matchmakerId;
      private Books books;
      private User user;
-     private byte[] donRec;
+     private String donRec;
      private int quantity;
      private Set transactionsForDonorId = new HashSet(0);
      private Set transactionsForRecId = new HashSet(0);
@@ -37,13 +37,13 @@ public class Matchmaker  implements java.io.Serializable {
     }
 
 	
-    public Matchmaker(Books books, User user, byte[] donRec, int quantity) {
+    public Matchmaker(Books books, User user, String donRec, int quantity) {
         this.books = books;
         this.user = user;
         this.donRec = donRec;
         this.quantity = quantity;
     }
-    public Matchmaker(Books books, User user, byte[] donRec, int quantity, Set transactionsForDonorId, Set transactionsForRecId) {
+    public Matchmaker(Books books, User user, String donRec, int quantity, Set transactionsForDonorId, Set transactionsForRecId) {
        this.books = books;
        this.user = user;
        this.donRec = donRec;
@@ -85,12 +85,12 @@ public class Matchmaker  implements java.io.Serializable {
     }
 
     
-    @Column(name="DonRec", nullable=false)
-    public byte[] getDonRec() {
+    @Column(name="DonRec", nullable=false, length=45)
+    public String getDonRec() {
         return this.donRec;
     }
     
-    public void setDonRec(byte[] donRec) {
+    public void setDonRec(String donRec) {
         this.donRec = donRec;
     }
 
