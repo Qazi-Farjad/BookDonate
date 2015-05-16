@@ -23,7 +23,7 @@ public class BooksDAO {
     
     public BooksDAO()
     {
-         Session session = getSessionFactory().openSession();
+        session = getSessionFactory().openSession();
     }
     
    

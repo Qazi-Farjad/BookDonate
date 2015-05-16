@@ -5,12 +5,50 @@
  */
 package DAO;
 
+import static POJOS.BDHibernateUtil.getSessionFactory;
+import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
-
-/**
- *
- * @author Farjad
- */
 public class TransactionDAO {
     
+    Session session = null;
+    Transaction tx = null;
+    
+    public TransactionDAO()
+    {
+         session = getSessionFactory().openSession();;
+    }
+    
+   
+    public void AddTransaction(POJOS.Transaction Tn){
+            
+        tx=session.beginTransaction();  
+        session.persist(Tn);
+        tx.commit();
+    }
+        
+    public List<POJOS.Transaction> ShowDonations(int Id)
+    {
+        Query q=session.createQuery("from Tranaction where matchmakerByDonorId=:id"); 
+        q.setParameter("id",Id);
+        List<POJOS.Transaction> list=q.list();  
+        
+        return list;  
+    }
+     
+    public List<POJOS.Transaction> ShowReceivings(int Id)
+    {
+        Query q=session.createQuery("from Tranaction where matchmakerByRecId=:id"); 
+        q.setParameter("id",Id);
+        List<POJOS.Transaction> list=q.list();  
+        
+        return list; 
+    }
+    
+        
+    public void CloseSession(){
+        session.close();
+    }
 }
