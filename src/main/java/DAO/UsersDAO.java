@@ -21,7 +21,7 @@ public class UsersDAO {
     
     public UsersDAO()
     {
-         session = getSessionFactory().openSession();
+         session = getSessionFactory().openSession();;
     }
     
    
@@ -47,11 +47,11 @@ public class UsersDAO {
         return us;
     }
      
-    public void DeleteUser(int Id)
+    public void DeleteUserByEmail(String Email)
     {
         tx=session.beginTransaction();
-        Query q = session.createQuery("delete from User where id= :id");
-        q.setParameter("id", Id);
+        Query q = session.createQuery("delete from User where email=:mail");
+        q.setParameter("mail", Email);
         q.executeUpdate();
         tx.commit();
     }
