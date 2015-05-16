@@ -121,10 +121,6 @@ public class Matchmaker  implements java.io.Serializable {
     public void setTransactionsForRecId(Set transactionsForRecId) {
         this.transactionsForRecId = transactionsForRecId;
     }
-
-
-
-
 }
 
 

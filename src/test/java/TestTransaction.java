@@ -18,4 +18,11 @@ import org.junit.Test;
 
 public class TestTransaction {
     
+    @Test 
+    public void TestAddTransaction()
+    {
+        
+        
+    }
+    
 }

@@ -13,20 +13,20 @@ import org.hibernate.Transaction;
 
 public class TransactionDAO {
         
-        Transaction tx;
-        Session session;
+   Transaction tx;
+   Session session;
     
-        public TransactionDAO()
+    public TransactionDAO()
     {
          session = getSessionFactory().openSession();;
     }
         
-        public void AddTransaction(POJOS.Transaction us)
-        {            
+    public void AddTransaction(POJOS.Transaction us)
+    {            
         tx=session.beginTransaction();  
         session.persist(us);
         tx.commit();
-        }
+    }
         
     public List<POJOS.Transaction> ShowDonations(int Id)
     {

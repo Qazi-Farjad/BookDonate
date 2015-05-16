@@ -53,7 +53,33 @@ public class TestBooks {
            bd.CloseSession();
            
     }
- 
+ @Ignore      
+ @Test
+      public void TestGetBookById(){
+          
+          BooksDAO bd = new BooksDAO();
+          
+          Books bk = bd.FindBookById(2);
+          
+          System.out.println("Book By Id");
+          
+          System.out.println("**********************");  
+            
+	  System.out.println("Book Id: "+bk.getBookId()); 
+          System.out.println("Book Name: "+bk.getBookName());  
+          System.out.println("Book Author: "+bk.getAuthor());  
+          System.out.println("Book Class: "+bk.getClass_()); 
+          System.out.println("Book Board: "+bk.getBoard());  
+          System.out.println("Book Image: "+bk.getBookImage());  
+          System.out.println("Book Description: "+bk.getBookDescription());  
+            
+          System.out.println("**********************");        
+          
+          
+          bd.CloseSession();
+          
+      }
+        
 @Ignore
 @Test
         public void TestGetAllBooks(){

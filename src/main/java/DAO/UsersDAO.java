@@ -31,6 +31,23 @@ public class UsersDAO {
         session.persist(Us);
         tx.commit();
     }
+    
+    public User GetUserByEmail(String Email)
+    {
+        Query q=session.createQuery("from User where email=:mail");
+        q.setParameter("mail", Email);
+        List<User> list=q.list();  
+        
+        Iterator<User> itr=list.iterator();  
+        
+        User us = null;
+	while(itr.hasNext())
+        {  
+            us=itr.next();
+        }
+       
+        return us;
+    }
         
     public List<User> GetUsers()
     {

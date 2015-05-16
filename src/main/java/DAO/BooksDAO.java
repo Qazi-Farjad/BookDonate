@@ -8,6 +8,7 @@ package DAO;
 
 import static POJOS.BDHibernateUtil.getSessionFactory;
 import POJOS.Books;
+import java.util.Iterator;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -40,6 +41,24 @@ public class BooksDAO {
         List<Books> list=q.list();  
 
         return list;  
+    }
+    
+   
+    public Books FindBookById(int Id)
+    {
+        Query q=session.createQuery("from Books where bookId=:id ");  
+        q.setParameter("id",Id);
+        List<Books> list=q.list();
+        
+        Iterator<Books> itr=list.iterator();  
+        
+        Books bk = null;
+	while(itr.hasNext())
+        {  
+            bk=itr.next();
+        }
+       
+        return bk;
     }
     
     public List<Books> FindBooksByName(String BookName)
