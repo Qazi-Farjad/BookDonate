@@ -5,6 +5,11 @@
  */
 package DAO;
 
+import static POJOS.BDHibernateUtil.getSessionFactory;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+
 
 
 /**
@@ -12,5 +17,20 @@ package DAO;
  * @author Farjad
  */
 public class TransactionDAO {
+        
+        Transaction tx;
+        Session session;
+    
+        public TransactionDAO()
+    {
+         session = getSessionFactory().openSession();;
+    }
+        
+        public void AddTransaction(POJOS.Transaction us)
+        {            
+        tx=session.beginTransaction();  
+        session.persist(us);
+        tx.commit();
+        }
     
 }

@@ -20,13 +20,13 @@ public class UsersDAO {
     
     public UsersDAO()
     {
-         Session session = getSessionFactory().openSession();;
+         session = getSessionFactory().openSession();;
     }
     
    
     public void AddUser(User Us){
             
-        Transaction tx=session.beginTransaction();  
+        tx=session.beginTransaction();  
         session.persist(Us);
         tx.commit();
     }
@@ -41,10 +41,10 @@ public class UsersDAO {
         return list;  
     }
      
-    public void DeleteUser(String Email)
+    public void DeleteUserByEmail(String Email)
     {
         tx=session.beginTransaction();
-        Query q = session.createQuery("delete from User where email= :mail");
+        Query q = session.createQuery("delete from User where email=:mail");
         q.setParameter("mail", Email);
         q.executeUpdate();
         tx.commit();
