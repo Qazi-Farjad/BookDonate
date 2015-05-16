@@ -25,20 +25,20 @@ public class User  implements java.io.Serializable {
 
      private Integer id;
      private String name;
-     private byte[] organization;
+     private String organization;
      private String email;
      private String password;
      private String address;
      private String city;
      private String country;
-     private byte[] verification;
+     private String verification;
      private Set matchmakers = new HashSet(0);
 
     public User() {
     }
 
 	
-    public User(String name, byte[] organization, String email, String password, String city, String country, byte[] verification) {
+    public User(String name, String organization, String email, String password, String city, String country, String verification) {
         this.name = name;
         this.organization = organization;
         this.email = email;
@@ -47,7 +47,7 @@ public class User  implements java.io.Serializable {
         this.country = country;
         this.verification = verification;
     }
-    public User(String name, byte[] organization, String email, String password, String address, String city, String country, byte[] verification, Set matchmakers) {
+    public User(String name, String organization, String email, String password, String address, String city, String country, String verification, Set matchmakers) {
        this.name = name;
        this.organization = organization;
        this.email = email;
@@ -82,12 +82,12 @@ public class User  implements java.io.Serializable {
     }
 
     
-    @Column(name="Organization", nullable=false)
-    public byte[] getOrganization() {
+    @Column(name="Organization", nullable=false , length=45)
+    public String getOrganization() {
         return this.organization;
     }
     
-    public void setOrganization(byte[] organization) {
+    public void setOrganization(String organization) {
         this.organization = organization;
     }
 
@@ -142,12 +142,12 @@ public class User  implements java.io.Serializable {
     }
 
     
-    @Column(name="Verification", nullable=false)
-    public byte[] getVerification() {
+    @Column(name="Verification", length=45)
+    public String getVerification() {
         return this.verification;
     }
     
-    public void setVerification(byte[] verification) {
+    public void setVerification(String verification) {
         this.verification = verification;
     }
 

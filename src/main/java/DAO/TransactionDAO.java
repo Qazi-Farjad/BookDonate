@@ -27,22 +27,6 @@ public class TransactionDAO {
         session.persist(us);
         tx.commit();
         }
-    
-    Session session = null;
-    Transaction tx = null;
-    
-    public TransactionDAO()
-    {
-         session = getSessionFactory().openSession();;
-    }
-    
-   
-    public void AddTransaction(POJOS.Transaction Tn){
-            
-        tx=session.beginTransaction();  
-        session.persist(Tn);
-        tx.commit();
-    }
         
     public List<POJOS.Transaction> ShowDonations(int Id)
     {

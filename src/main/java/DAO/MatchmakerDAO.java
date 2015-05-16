@@ -19,7 +19,7 @@ public class MatchmakerDAO {
     
     public MatchmakerDAO()
     {
-         session = getSessionFactory().openSession();;
+         session = getSessionFactory().openSession();
     }
     
    
@@ -52,7 +52,7 @@ public class MatchmakerDAO {
     public void DeleteEntry(int MatchMakerId)
     {
         tx=session.beginTransaction();
-        Query q = session.createQuery("delete from Matchmaker where matchmakerId= :id");
+        Query q = session.createQuery("delete from Matchmaker where matchmakerId=:id");
         q.setParameter("id", MatchMakerId);
         q.executeUpdate();
         tx.commit();
