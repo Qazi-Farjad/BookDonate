@@ -44,23 +44,25 @@ public class SignUpServlet extends HttpServlet {
         String organization = "N/A";
         
         UsersDAO userDAO = new UsersDAO();
-        if(userDAO.GetUserByEmail(email) != null){
-            //User us = new User(email, password, name);
-            User us = new User(name, organization, email, password, city, country, addr);
-            userDAO.AddUser(us);
-            User sessionEmbed = userDAO.GetUserByEmail(email);
+        System.out.println("Debug point 1");
+        User chk = userDAO.GetUserByEmail(email);
+        if( chk == null){
+            User us = new User(name, organization, email, password, city, country);
             
+            userDAO.AddUser(us);
+            chk = userDAO.GetUserByEmail(email);
+            System.out.println("Debug point 1");
             try{
 
                 HttpSession session = request.getSession();
 
-                session.setAttribute("user", sessionEmbed);
+                session.setAttribute("user", chk);
                 session.setMaxInactiveInterval(60*60*24);
-
+                System.out.println("Debug point 2");
                 String encodedURL = response.encodeRedirectURL("MainLanding.jsp");
-                response.sendRedirect("/badAddress");
-
-            
+                response.sendRedirect(encodedURL);
+                System.out.println("Debug point 3");
+                
             }catch(Exception e){
                 System.err.println("Error:" + e);
             }
