@@ -102,11 +102,11 @@
                        <p>Board: <%=bk.getBoard()%></p>
 
                        <center>
-                       <form action="BookLandingServlet">
-                          <input type="hidden"  name="id" value="<%=bk.getBookId()%>">
+                       <form action="MatchmakingServlet">
+                          <input type="hidden"  name="Bookid" value="<%=(int)bk.getBookId()%>">
                           <input type="radio" name="donReq" value="Donate"> Donate <br/>
                           <input type="radio" name="donReq" value="Request"> Request <br/>
-                          <input type="submit" class ="btn btn-lg btn-primary" value="Go to Book Page">
+                          <input type="submit" class ="btn btn-lg btn-primary" value="Apply for matchmaking">
                           
                        </form>
                        </center>
@@ -128,9 +128,9 @@
     <script>
     $(document).ready(function() {
         $( ".coursesCont" ).click(function() {
-            var id = $(this).id;
+            var id = $(this).Bookid;
             var donReq = $(this).donReq;
-            $.post("BookLandingServlet",
+            $.post("MatchmakingServlet",
               {
                 ids:id
                 don:donReq

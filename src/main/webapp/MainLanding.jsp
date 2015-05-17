@@ -107,7 +107,7 @@
         %>
         
         <div class="col-md-7" style="padding-right:20px;">
-            <center><h3 style="color:#7D7D7D; text-shadow: 1px 1px #2953CF;">Your Transactions</h3></center>
+            <center><h3 style="color:#7D7D7D; text-shadow: 1px 1px #2953CF;">Matchmaking Queue</h3></center>
         <div class="coursesCont">
         <%
             for(Matchmaker entry: mm){

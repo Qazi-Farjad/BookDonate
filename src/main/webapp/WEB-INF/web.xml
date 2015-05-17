@@ -12,6 +12,10 @@
         <servlet-name>SearchServlet</servlet-name>
         <servlet-class>Servlets.SearchServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MatchmakingServlet</servlet-name>
+        <servlet-class>Servlets.MatchmakingServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpServlet</servlet-name>
         <url-pattern>/SignUpServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/SearchServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MatchmakingServlet</servlet-name>
+        <url-pattern>/MatchmakingServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
