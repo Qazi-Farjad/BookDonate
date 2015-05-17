@@ -8,6 +8,7 @@ package DAO;
 
 import static POJOS.BDHibernateUtil.getSessionFactory;
 import POJOS.Books;
+import java.util.Iterator;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -23,7 +24,7 @@ public class BooksDAO {
     
     public BooksDAO()
     {
-         Session session = getSessionFactory().openSession();
+        session = getSessionFactory().openSession();
     }
     
    
@@ -42,9 +43,27 @@ public class BooksDAO {
         return list;  
     }
     
+   
+    public Books FindBookById(int Id)
+    {
+        Query q=session.createQuery("from Books where bookId=:id ");  
+        q.setParameter("id",Id);
+        List<Books> list=q.list();
+        
+        Iterator<Books> itr=list.iterator();  
+        
+        Books bk = null;
+	while(itr.hasNext())
+        {  
+            bk=itr.next();
+        }
+       
+        return bk;
+    }
+    
     public List<Books> FindBooksByName(String BookName)
     {
-        Query q=session.createQuery("from Books where bookName=: name ");  
+        Query q=session.createQuery("from Books where bookName=:name ");  
         q.setParameter("name",BookName);
         List<Books> list=q.list();  
 
@@ -73,7 +92,7 @@ public class BooksDAO {
     public void DeleteBook(String BookName)
     {
         tx=session.beginTransaction();
-        Query q = session.createQuery("delete from Books where bookName=: name");
+        Query q = session.createQuery("delete from Books where bookName=:name");
         q.setParameter("name", BookName);
         q.executeUpdate();
         tx.commit();
@@ -82,7 +101,7 @@ public class BooksDAO {
     public void UpdateBook(String BookName,String Description )
     {
         tx=session.beginTransaction();
-        Query q=session.createQuery("Update Boooks set bookDescription=:desc where bookName=:name");
+        Query q=session.createQuery("Update Books set bookDescription=:desc where bookName=:name");
         q.setParameter("name",BookName);
         q.setParameter("desc",Description);
         q.executeUpdate();

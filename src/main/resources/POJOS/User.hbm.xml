@@ -11,8 +11,8 @@
         <property name="name" type="string">
             <column name="Name" length="45" not-null="true" />
         </property>
-        <property name="organization" type="binary">
-            <column name="Organization" not-null="true" />
+        <property name="organization" type="string">
+            <column name="Organization" length="45" not-null="true" />
         </property>
         <property name="email" type="string">
             <column name="Email" length="45" not-null="true" />
@@ -29,8 +29,8 @@
         <property name="country" type="string">
             <column name="Country" length="45" not-null="true" />
         </property>
-        <property name="verification" type="binary">
-            <column name="Verification" not-null="true" />
+        <property name="verification" type="string">
+            <column name="Verification" length="45" />
         </property>
         <set name="matchmakers" table="matchmaker" inverse="true" lazy="true" fetch="select">
             <key>
