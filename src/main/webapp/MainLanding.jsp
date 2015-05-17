@@ -83,7 +83,7 @@
         %>
         
         <div class="col-md-3" >
-            <h3 style="color:#7D7D7D; text-shadow: 1px 1px #2953CF;">Your Profile Tag</h3>
+            <center><h3 style="color:#7D7D7D; text-shadow: 1px 1px #2953CF;">Your Profile Tag</h3></center>
             
             <div class="thumbnail" style="cursor: pointer;">
                <!-- Get Profile Pic Image.-->      
@@ -91,11 +91,10 @@
               <div class="caption">
                   <center>
                    <h3><%=uai.getName()%></h3>
-                   <p>City : 
-
-                   </p>
-                   <p>Country : </p>
-                   <p>Address : </p>     
+                   <p>City : <%=uai.getCity()%></p>
+                   <p>Country : <%=uai.getCountry()%></p>
+                   <p>Address : <%=uai.getAddress()%></p>
+                   <p>Email : <%=uai.getEmail()%></p>
                   </center>                     
               </div>
             </div>
@@ -107,7 +106,7 @@
             
         %>
         
-        <div class="col-md-6" style="padding-right:20px; border-right: 1px solid #ccc;border-left: 1px solid #ccc;">
+        <div class="col-md-7" style="padding-right:20px;">
             <center><h3 style="color:#7D7D7D; text-shadow: 1px 1px #2953CF;">Your Transactions</h3></center>
         <div class="coursesCont">
         <%
@@ -141,38 +140,24 @@
         
 
         
-        <div class="col-md-3">
-            <center><h3 style="color:#7D7D7D; text-shadow: 1px 1px #2953CF;">Book Highlights</h3></center>
-    
-            <%
-            List<Books> bks = bDAO.FindAllBooks();
-            %>
-            
-        <div class="coursesContInt">
-            <%
-                for(Books i: bks){
-                    
-                
-            %>
-                
-         <div class="pull-right" style="padding-left:20px;padding-top: 20px;">
-         <div class="thumbnail" id="target" style="cursor: pointer;" >
-            
-         <div class="caption">
-           <h3><%=i.getBookName()%></h3>
-           <hr class="featurette-divider">
-           <p><%=i.getBookDescription()%></p>
-          
-         </div>
-          </div>
-             
-         </div>
-         <%
-                }
-                    %>
+        <div class="col-md-2">
+            <center><h3 style="color:#7D7D7D; text-shadow: 1px 1px #2953CF;">Badges</h3></center>
+            <div class="thumbnail" style="cursor: pointer;">
+               <!-- Get Profile Pic Image.-->      
+              <img src="Images/medal.png" height = "250" width = "175" alt="No image">
+              <div class="caption">
+                  <div class="caption">
+                  <center>
+                  
+                   <p>Donater: </p>
+                   <p>Serial Donater : </p>
+                  
+                  </center>  
+                      </div>
+              </div>
+            </div>
         </div>
         </div>
-      </div>
         </div>
        
         <script type='text/javascript' src="js/jquery.min.js"></script>

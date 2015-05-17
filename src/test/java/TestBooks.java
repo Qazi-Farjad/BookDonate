@@ -35,7 +35,7 @@ public class TestBooks {
             System.out.println("**********************");  
         } 
     }
-@Ignore
+
 @Test
         public void TestInsertBook(){
 
