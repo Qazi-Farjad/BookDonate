@@ -38,10 +38,15 @@ public class SignUpServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String name = request.getParameter("name");
+        String addr = "N/A";
+        String city = "N/A";
+        String country = "N/A";
+        String organization = "N/A";
         
         UsersDAO userDAO = new UsersDAO();
         if(userDAO.GetUserByEmail(email) != null){
-            User us = new User(email, password, name);
+            //User us = new User(email, password, name);
+            User us = new User(name, organization, email, password, city, country, addr);
             userDAO.AddUser(us);
             User sessionEmbed = userDAO.GetUserByEmail(email);
             

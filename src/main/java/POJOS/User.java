@@ -43,13 +43,14 @@ public class User  implements java.io.Serializable {
         this.password = password;
     }
 	
-    public User(String name, String organization, String email, String password, String city, String country) {
+    public User(String name, String organization, String email, String password, String city, String country, String addr) {
         this.name = name;
         this.organization = organization;
         this.email = email;
         this.password = password;
         this.city = city;
         this.country = country;
+        this.address = addr;
     }
     public User(String name, String organization, String email, String password, String address, String city, String country, String verification, Set matchmakers) {
        this.name = name;
