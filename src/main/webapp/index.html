@@ -5,6 +5,8 @@
 <html>
 	<head>
 		<title>BookDonate</title>
+                
+                <link rel="stylesheet" href="css\bootstrap\css\bootstrap.css" media="screen">
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -59,9 +61,78 @@
 
 			</section>
 
-		<!-- Main -->
+	<!--------------- Login/Signup -------------->
 			<article id="main">
+      <form class="form-signin" role="form" action="LoginServlet" id = "SignIn" onsubmit="return validateForm()">
+          <center><h3 class="form-signin-heading">Sign In</h3></center>
+        <input type="email" name = "email" class="form-control" placeholder="Email address" required autofocus></br>
+        <input type="password" name = "password" class="form-control" placeholder="Password" required pattern=".{6,}" title="6 characters minimum">
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <center><a id = "SignUpLink">Or SignUp</a></center>
+      </form>
 
+
+ 
+  <form role="form" action="SignUpServlet" id = "SignUp" onsubmit="return validateForm()">
+    <div class="form-group">
+        <center><h2>Sign Up</h2></center>
+      <label for="firstname" class="col-md-3">
+         Name:
+      </label>
+      <div class="col-md-9">
+        <input type="text" class="form-control" name="name" placeholder="Enter Name">
+            <br>
+      </div>
+  
+    </div>
+    <div class="form-group">
+      <label for="emailaddress" class="col-md-3">
+        Email address:
+      </label>
+      <div class="col-md-9">
+        <input type="email" class="form-control" name="email" placeholder="Enter email address" required>
+        <p class="help-block" style="color:white">
+          Example: yourname@domain.com
+        </p>
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <label for="password" class="col-md-3">
+        Password:
+      </label>
+      <div class="col-md-9">
+        <input type="password" class="form-control" name="password" placeholder="Enter Password" required pattern=".{6,}" title="6 characters minimum">
+        <p class="help-block" style="color:white">
+          Min: 6 characters
+        </p>
+      </div>
+    </div>
+ 
+    <div class="checkbox">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-9">
+        <label>
+          <input type="checkbox">Terms and Conditions</label>
+      </div>
+        <br>
+    </div>
+ 
+    <div class="row">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-9">
+        <button type="submit" class="btn btn-info" id = "Register">
+          Register
+        </button>
+      </div>
+    </div>
+      <center><a id="SignInLink">Or SignIn</a></center>
+  </form>
 
 			</article>
 
@@ -80,6 +151,43 @@
 				</ul>
 
 			</footer>
+
+    <script type='text/javascript' src="css\bootstrap\js\bootstrap.min.js"></script>
+    <script type='text/javascript'>
+        
+        $(document).ready(function() {
+            $( "#SignUp" ).hide();
+        $( "#SignUpLink" ).click(function() {
+            $( "#SignIn" ).hide(1000);
+            $( "#SignUp" ).show(1000);
+        });
+        
+        $( "#SignInLink" ).click(function() {
+            $( "#SignUp" ).hide(1000);
+            $( "#SignIn" ).show(1000);
+        });
+        
+        
+        
+        });
+        
+        function validateForm() {
+        var name = document.getElementById("email");
+        if (name.value === "") {
+           alert("Please enter UserName");
+           name.focus();
+           return false;             
+        }
+        var password = document.getElementById("password");
+        if (password.value === "") {
+           alert("Please enter Password");
+           password.focus();
+           return false;
+        }
+        return true;
+    }
+        
+        </script>
 
 	</body>
 </html>
